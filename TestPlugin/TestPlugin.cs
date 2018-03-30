@@ -1,10 +1,11 @@
 ﻿using FPLedit.Buchfahrplan;
 using FPLedit.Shared;
+using FPLedit.Shared.Templating;
 using System.Windows.Forms;
 
 namespace TestPlugin
 {
-    [Plugin("TestPlugin", Author = "Autorenname")]
+    [Plugin("TestPlugin", "2.0.0", "2.0", Author = "Autorenname")]
     public class Plugin : IPlugin
     {
         public void Init(IInfo info)
@@ -43,7 +44,7 @@ namespace TestPlugin
                 subItem.Enabled = e.FileState.Opened;
             };
 
-            info.Register<IBfplTemplate>(new TestTemplate());
+            info.Register<ITemplateProxy>(new TestTemplate());
         }
 
         private void FileHandling(IInfo info)
