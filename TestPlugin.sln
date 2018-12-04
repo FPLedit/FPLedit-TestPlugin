@@ -3,7 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin", "TestPlugin/TestPlugin.csproj", "{ADF3C1C7-D39B-48DE-B7D5-F98B10E1F6C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin", "TestPlugin\TestPlugin.csproj", "{ADF3C1C7-D39B-48DE-B7D5-F98B10E1F6C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{5A7DF0EA-308C-4084-8012-193BE5A9A76D}"
+	ProjectSection(SolutionItems) = preProject
+		libs\Eto.dll = libs\Eto.dll
+		libs\FPLedit.Buchfahrplan.dll = libs\FPLedit.Buchfahrplan.dll
+		libs\FPLedit.Shared.dll = libs\FPLedit.Shared.dll
+		libs\FPLedit.Shared.UI.dll = libs\FPLedit.Shared.UI.dll
+		libs\README.md = libs\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +27,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E649998-6D04-4457-9C38-EAC8EB4C2A07}
 	EndGlobalSection
 EndGlobal

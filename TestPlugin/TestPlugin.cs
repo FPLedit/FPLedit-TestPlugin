@@ -1,7 +1,8 @@
-﻿using FPLedit.Buchfahrplan;
+﻿using Eto.Forms;
+using FPLedit.Buchfahrplan;
 using FPLedit.Shared;
 using FPLedit.Shared.Templating;
-using System.Windows.Forms;
+using FPLedit.Shared.UI;
 
 namespace TestPlugin
 {
@@ -32,11 +33,10 @@ namespace TestPlugin
             var fn = info.GetTemp("abc.xyz");
             info.Logger.Info(fn);
 
-            var item = new ToolStripMenuItem("Test");
-            info.Menu.Items.Add(item);
+            var item = ((MenuBar)info.Menu).CreateItem("Test");
 
             // Einen Untereintrag hinzufügen:
-            var subItem = item.DropDownItems.Add("Bla");
+            var subItem = item.CreateItem("Bla");
             subItem.Enabled = false;
 
             info.FileStateChanged += (s, e) => {
