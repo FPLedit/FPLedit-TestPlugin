@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin", "TestPlugin\Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{5A7DF0EA-308C-4084-8012-193BE5A9A76D}"
 	ProjectSection(SolutionItems) = preProject
-		libs\Eto.dll = libs\Eto.dll
-		libs\FPLedit.Buchfahrplan.dll = libs\FPLedit.Buchfahrplan.dll
 		libs\FPLedit.Shared.dll = libs\FPLedit.Shared.dll
 		libs\FPLedit.Shared.UI.dll = libs\FPLedit.Shared.UI.dll
 		libs\README.md = libs\README.md

@@ -1,15 +1,13 @@
 ﻿using Eto.Forms;
-using FPLedit.Buchfahrplan;
 using FPLedit.Shared;
-using FPLedit.Shared.Templating;
 using FPLedit.Shared.UI;
 
 namespace TestPlugin
 {
-    [Plugin("TestPlugin", "2.0.0", "2.0", Author = "Autorenname")]
+    [Plugin("TestPlugin", "2.2.0", "2.2", Author = "Autorenname")]
     public class Plugin : IPlugin
     {
-        public void Init(IInfo info)
+        public void Init(IPluginInterface info)
         {
             // Code zur Initialisierung der Erweiterung
             info.Register<IExport>(new TestExport());
@@ -18,6 +16,7 @@ namespace TestPlugin
             info.Logger.Info("Das ist nur eine Meldung");
             info.Logger.Warning("Die Warnmeldung ist auf Windows-Systemen gelb");
             info.Logger.Error("Fehlermeldungen sind rot");
+            info.Logger.Debug("Debug-Meldungen werden dem Benutzer nicht angezeigt");
 
             // Wert ermitteln:
             bool a = info.Settings.Get<bool>("test-bool", false);
@@ -28,11 +27,15 @@ namespace TestPlugin
             info.Logger.Info("a == b: " + (a == b));
             // Sie lassen sich auch wieder entfernen:
             info.Settings.Remove("test-bool");
+            
+            /*
+             * Hinweis: Im IReducesPluginInterface können Erweiterungen nur gelesen werden.
+             */
 
             // Gibt den absoluten Pfad der Datei %TEMP%\fpledit\abc.xyz zurück:
             var fn = info.GetTemp("abc.xyz");
             info.Logger.Info(fn);
-
+            
             var item = ((MenuBar)info.Menu).CreateItem("Test");
 
             // Einen Untereintrag hinzufügen:
@@ -43,11 +46,9 @@ namespace TestPlugin
                 // Nur aktivieren, wenn Datei geöffnet
                 subItem.Enabled = e.FileState.Opened;
             };
-
-            info.Register<ITemplateProxy>(new TestTemplate());
         }
 
-        private void FileHandling(IInfo info)
+        private void FileHandling(IPluginInterface info)
         {
             // Öffnet den "Datei öffnen"-Dialog:
             info.Open();

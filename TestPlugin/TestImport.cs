@@ -1,5 +1,6 @@
 ﻿using FPLedit.Shared;
 using System.IO;
+using System.Text;
 
 namespace TestPlugin
 {
@@ -7,10 +8,17 @@ namespace TestPlugin
     {
         public string Filter => "Fahrplanname als Textdatei (*.txt)|*.txt";
 
-        public Timetable Import(string filename, ILog logger)
+        public Timetable Import(Stream stream, IReducedPluginInterface pluginInterface, ILog replaceLog = null)
         {
-            var tt = new Timetable();
-            tt.TTName = File.ReadAllText(filename);
+            /*
+             * Der Fahrplantyp (Linear/Netzwerk) muss hier explizit angegeben werden, kann aber ntürlich auf Basis der
+             * importierten Datei gewählt werden.
+             * 
+             * Hinweis zur asynchronen Ausführung: siehe TestExport.cs
+             */
+            var tt = new Timetable(TimetableType.Linear);
+            using (var streamReader = new StreamReader(stream, new UTF8Encoding(false), true, 1024, true))
+                tt.TTName = streamReader.ReadToEnd();
             return tt;
         }
     }
