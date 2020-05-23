@@ -7,11 +7,11 @@ namespace TestPlugin
     [Plugin("TestPlugin", "2.2.0", "2.2", Author = "Autorenname")]
     public class Plugin : IPlugin
     {
-        public void Init(IPluginInterface info)
+        public void Init(IPluginInterface info, IComponentRegistry registry)
         {
             // Code zur Initialisierung der Erweiterung
-            info.Register<IExport>(new TestExport());
-            info.Register<IImport>(new TestImport());
+            registry.Register<IExport>(new TestExport());
+            registry.Register<IImport>(new TestImport());
 
             info.Logger.Info("Das ist nur eine Meldung");
             info.Logger.Warning("Die Warnmeldung ist auf Windows-Systemen gelb");
